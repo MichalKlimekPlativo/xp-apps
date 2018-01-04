@@ -25,9 +25,14 @@ describe('Grid Panel & Toolbar', function () {
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3");
             return Promise.all([installAppDialog.clickOnInstallLink(0), installAppDialog.clickOnInstallLink(1)]);
         }).then(() => {
+            console.log('Test3-bis');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3-bis");
+            return installAppDialog.clickOnCancelButtonTop();
+        }).then(() => {
             console.log('Test4');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop4");
-            return appBrowsePanel.waitForRowByNameVisible('Add Auth0 authentication to your Enonic XP installation')
+            return Promise.all([appBrowsePanel.waitForRowByNameVisible('Add Auth0 authentication to your Enonic XP installation'),
+                appBrowsePanel.waitForRowByNameVisible('Add full-featured chat capabilities to your website.')])
         }).then(() => {
             console.log('Test5');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop5");
