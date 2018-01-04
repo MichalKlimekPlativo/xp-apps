@@ -6,7 +6,8 @@ var page = require('../page');
 var elements = require('../../libs/elements');
 var dialog = {
     container: `//div[contains(@id,'InstallAppDialog')]`,
-    filterInput:`//div[contains(@id,'ApplicationInput')]/input`,
+    filterInput: `//div[contains(@id,'ApplicationInput')]/input`,
+    installLinks: `//a[@class='install']`,
 };
 var installAppDialog = Object.create(page, {
 
@@ -27,7 +28,7 @@ var installAppDialog = Object.create(page, {
     },
     clickOnCancelButtonTop: {
         value: function () {
-            return this.doClick(this.cancelButton).catch((err)=> {
+            return this.doClick(this.cancelButton).catch((err) => {
                 this.saveScreenshot('err_install_dialog_cancel');
                 throw new Error('Error when try click on cancel button ' + err);
             })
@@ -35,7 +36,15 @@ var installAppDialog = Object.create(page, {
     },
     waitForOpened: {
         value: function () {
-            return this.waitForVisible(`${dialog.container}`, 3000).catch(err=> {
+            return this.waitForVisible(`${dialog.container}`, 3000).catch(err => {
+                this.saveScreenshot('err_install_dialog_load');
+                throw new Error('New Content dialog was not loaded! ' + err);
+            });
+        }
+    },
+    waitForLoaded: {
+        value: function () {
+            return this.waitForVisible(`${dialog.installLinks}`, 3000).catch(err => {
                 this.saveScreenshot('err_install_dialog_load');
                 throw new Error('New Content dialog was not loaded! ' + err);
             });

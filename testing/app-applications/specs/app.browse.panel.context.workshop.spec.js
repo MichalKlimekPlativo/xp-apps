@@ -6,6 +6,7 @@ var webDriverHelper = require('../libs/WebDriverHelper');
 var appConstant = require('../libs/app_const');
 const studioUtils = require('../libs/studio.utils.js');
 const appBrowsePanel = require('../page_objects/applications/applications.browse.panel');
+const installAppDialog = require('../page_objects/applications/install.app.dialog');
 
 
 describe('Workshop test....', function () {
@@ -18,6 +19,10 @@ describe('Workshop test....', function () {
         return appBrowsePanel.clickOnInstallButton().then(() => {
             console.log('Test2');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop2");
+            return installAppDialog.waitForLoaded();
+        }).then(() => {
+            console.log('Test3');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3");
         });
     });
 
