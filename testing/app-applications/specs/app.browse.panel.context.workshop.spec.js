@@ -9,11 +9,11 @@ const appBrowsePanel = require('../page_objects/applications/applications.browse
 const installAppDialog = require('../page_objects/applications/install.app.dialog');
 
 
-describe('Workshop test....', function () {
+describe('Grid Panel & Toolbar', function () {
     this.timeout(70000);
     webDriverHelper.setupBrowser();
 
-    it(`Office League`, () => {
+    it(`Grid Panel & Toolbar`, () => {
         console.log('Test');
         studioUtils.saveScreenshot(webDriverHelper.browser, "workshop");
         return appBrowsePanel.clickOnInstallButton().then(() => {
@@ -27,6 +27,10 @@ describe('Workshop test....', function () {
         }).then(() => {
             console.log('Test4');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop4");
+            return appBrowsePanel.waitForRowByNameVisible('Add Auth0 authentication to your Enonic XP installation')
+        }).then(() => {
+            console.log('Test5');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop5");
         });
     });
 

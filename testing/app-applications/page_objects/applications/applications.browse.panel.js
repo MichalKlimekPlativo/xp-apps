@@ -9,7 +9,7 @@ var panel = {
     stopButton: `//button[contains(@id, 'ActionButton') and child::span[contains(.,'Stop')]]`,
     startButton: `//button[contains(@id, 'ActionButton') and child::span[contains(.,'Start')]]`,
     rowByName: function (name) {
-        return `//div[contains(@id,'NamesView') and child::p[contains(@class,'sub-name') and contains(.,'${name}')]]`
+        return `//*[@id="ApplicationTreeGrid"]//div[contains(@id,'NamesView') and child::p[contains(@class,'sub-name') and contains(.,'${name}')]]`
     },
     checkboxByName: function (name) {
         return `${elements.itemByName(name)}` +
@@ -144,7 +144,7 @@ var applicationBrowsePanel = Object.create(page, {
                     throw Error('Row with the name ' + name + ' is not visible in ' + 3000 + 'ms')
                 })
         }
-    },
+    },    
     clickCheckboxAndSelectRowByDisplayName: {
         value: function (displayName) {
             var displayNameXpath = panel.rowByName(displayName);
