@@ -15,12 +15,12 @@ describe('Workshop test....', function () {
     it(`Office League`, () => {
         console.log('Test');
         studioUtils.saveScreenshot(webDriverHelper.browser, "workshop");
-        appBrowsePanel.clickOnInstallButton().then(() => {
+        return appBrowsePanel.clickOnInstallButton().then(() => {
             console.log('Test2');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop2");
         });
     });
 
     beforeEach(() => studioUtils.navigateToApplicationsApp(webDriverHelper.browser));
-    //afterEach(() => studioUtils.doCloseCurrentBrowserTab(webDriverHelper.browser));
+    afterEach(() => studioUtils.doCloseCurrentBrowserTab(webDriverHelper.browser));
 });
