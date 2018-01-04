@@ -36,6 +36,14 @@ describe('Grid Panel & Toolbar', function () {
         }).then(() => {
             console.log('Test5');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop5");
+            return appBrowsePanel.clickOnRowByName('Add Auth0 authentication to your Enonic XP installation');
+        }).then(() => {
+            console.log('Test6');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop6");
+            return Promise.all([appBrowsePanel.waitForUninstallButtonEnabled(), appBrowsePanel.waitForStopButtonEnabled(), appBrowsePanel.waitForStartButtonEnabled(true)]);
+        }).then(() => {
+            console.log('Test7');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop7");
         });
     });
 
