@@ -23,7 +23,7 @@ describe('Workshop test....', function () {
         }).then(() => {
             console.log('Test3');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3");
-            return installAppDialog.clickOnFirstInstallLink();
+            return Promise.all([installAppDialog.clickOnInstallLink(0), installAppDialog.clickOnInstallLink(1)]);
         }).then(() => {
             console.log('Test4');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop4");
