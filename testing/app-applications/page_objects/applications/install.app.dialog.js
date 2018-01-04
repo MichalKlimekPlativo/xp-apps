@@ -7,7 +7,7 @@ var elements = require('../../libs/elements');
 var dialog = {
     container: `//div[contains(@id,'InstallAppDialog')]`,
     filterInput: `//div[contains(@id,'ApplicationInput')]/input`,
-    installLinks: `//*[@id="MarketAppViewer"]`,
+    firstInstallLink: `(//a[@class="install"])[1]`
 };
 var installAppDialog = Object.create(page, {
 
@@ -44,10 +44,18 @@ var installAppDialog = Object.create(page, {
     },
     waitForLoaded: {
         value: function () {
-            return this.waitForVisible(`${dialog.installLinks}`, 3000).catch(err => {
+            return this.waitForVisible(dialog.firstInstallLink, 3000).catch(err => {
                 this.saveScreenshot('err_install_dialog_load');
                 throw new Error('New Content dialog was not loaded! ' + err);
             });
+        }
+    },
+    clickOnFirstInstallLink: {
+        value: function () {
+            return this.doClick(dialog.firstInstallLink).catch((err) => {
+                this.saveScreenshot('err_install_dialog_cancel');
+                throw new Error('Error when try click on cancel button ' + err);
+            })
         }
     },
     waitForClosed: {

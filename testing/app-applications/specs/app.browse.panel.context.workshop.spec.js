@@ -23,6 +23,10 @@ describe('Workshop test....', function () {
         }).then(() => {
             console.log('Test3');
             studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3");
+            return installAppDialog.clickOnFirstInstallLink();
+        }).then(() => {
+            console.log('Test4');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop4");
         });
     });
 
