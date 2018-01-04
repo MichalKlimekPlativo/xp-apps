@@ -7,7 +7,7 @@ var elements = require('../../libs/elements');
 var dialog = {
     container: `//div[contains(@id,'InstallAppDialog')]`,
     filterInput: `//div[contains(@id,'ApplicationInput')]/input`,
-    installLinks: `//a[@class='install']`,
+    installLinks: `//*[@id="MarketAppViewer"]`,
 };
 var installAppDialog = Object.create(page, {
 
