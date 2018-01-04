@@ -15,35 +15,43 @@ describe('Grid Panel & Toolbar', function () {
 
     it(`Grid Panel & Toolbar`, () => {
         console.log('Test');
-        studioUtils.saveScreenshot(webDriverHelper.browser, "workshop");
+        studioUtils.saveScreenshot(webDriverHelper.browser, "01-before");
         return appBrowsePanel.clickOnInstallButton().then(() => {
-            console.log('Test2');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop2");
+            console.log('02-clickinstall');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "02-clickinstall");
             return installAppDialog.waitForLoaded();
         }).then(() => {
-            console.log('Test3');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3");
+            console.log('03-waitforloaded');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "03-waitforloaded");
             return Promise.all([installAppDialog.clickOnInstallLink(0), installAppDialog.clickOnInstallLink(1)]);
         }).then(() => {
-            console.log('Test3-bis');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop3-bis");
+            console.log('04-clickinstall');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "04-clickinstall");
             return installAppDialog.clickOnCancelButtonTop();
         }).then(() => {
-            console.log('Test4');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop4");
+            console.log('05-closedialog');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "05-closedialog");
             return Promise.all([appBrowsePanel.waitForRowByNameVisible('Add Auth0 authentication to your Enonic XP installation'),
                 appBrowsePanel.waitForRowByNameVisible('Add full-featured chat capabilities to your website.')])
         }).then(() => {
-            console.log('Test5');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop5");
+            console.log('06-checkrows');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "06-checkrows");
             return appBrowsePanel.clickOnRowByName('Add Auth0 authentication to your Enonic XP installation');
         }).then(() => {
-            console.log('Test6');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop6");
+            console.log('07-selectrow');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "07-selectrow");
             return Promise.all([appBrowsePanel.waitForUninstallButtonEnabled(), appBrowsePanel.waitForStopButtonEnabled(), appBrowsePanel.waitForStartButtonEnabled(true)]);
         }).then(() => {
-            console.log('Test7');
-            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop7");
+            console.log('08-checkbuttons');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "08-checkbuttons");
+            return appBrowsePanel.clickOnRowByName('Add Auth0 authentication to your Enonic XP installation');
+        }).then(() => {
+            console.log('Test8');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop8");
+            return Promise.all([appBrowsePanel.waitForUninstallButtonEnabled(true), appBrowsePanel.waitForStopButtonEnabled(true), appBrowsePanel.waitForStartButtonEnabled(true)]);
+        }).then(() => {
+            console.log('Test9');
+            studioUtils.saveScreenshot(webDriverHelper.browser, "workshop9");
         });
     });
 
